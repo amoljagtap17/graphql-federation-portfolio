@@ -1,10 +1,9 @@
-import { Module } from '@nestjs/common';
-import { AssetClassificationSubgraphController } from './asset-classification-subgraph.controller';
-import { AssetClassificationSubgraphService } from './asset-classification-subgraph.service';
+import { Module } from "@nestjs/common";
+import { BroadAssetClassModule } from "./broad-asset-class/broad-asset-class.module";
 
 @Module({
-  imports: [],
-  controllers: [AssetClassificationSubgraphController],
-  providers: [AssetClassificationSubgraphService],
+	imports: [BroadAssetClassModule],
+	controllers: [],
+	providers: [],
 })
 export class AssetClassificationSubgraphModule {}

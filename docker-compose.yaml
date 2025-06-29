@@ -15,6 +15,22 @@ services:
     depends_on:
       - postgres
     restart: unless-stopped
+  gateway:
+    build:
+      context: .
+      dockerfile: ./apps/gateway/Dockerfile
+      target: development
+    container_name: gateway
+    ports:
+      - "3000:3000"
+    env_file: ./apps/gateway/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - asset-classification
+    restart: unless-stopped
   postgres:
     image: postgres:latest
     container_name: postgres

@@ -1,4 +1,5 @@
 import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
+import { LoggerModule } from "@app/common";
 import { ApolloFederationDriver, ApolloFederationDriverConfig } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
@@ -19,6 +20,7 @@ import { BroadAssetClassModule } from "./broad-asset-class/broad-asset-class.mod
 			plugins: [ApolloServerPluginLandingPageLocalDefault()],
 		}),
 		BroadAssetClassModule,
+		LoggerModule,
 	],
 	controllers: [],
 	providers: [],

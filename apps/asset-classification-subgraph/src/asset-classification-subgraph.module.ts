@@ -15,7 +15,7 @@ import { BroadAssetClassModule } from "./broad-asset-class/broad-asset-class.mod
 			},
 			playground: false,
 			sortSchema: true,
-			graphiql: true,
+			graphiql: false,
 			plugins: [ApolloServerPluginLandingPageLocalDefault()],
 		}),
 		BroadAssetClassModule,

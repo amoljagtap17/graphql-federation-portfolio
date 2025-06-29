@@ -1,4 +1,20 @@
 services:
+  asset-classification:
+    build:
+      context: .
+      dockerfile: ./apps/asset-classification-subgraph/Dockerfile
+      target: development
+    container_name: asset-classification
+    ports:
+      - "3001:3001"
+    env_file: ./apps/asset-classification-subgraph/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
   postgres:
     image: postgres:latest
     container_name: postgres

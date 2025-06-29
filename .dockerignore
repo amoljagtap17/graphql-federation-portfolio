@@ -1,0 +1,26 @@
+# Ignore node_modules directory
+node_modules
+# Ignore the build directory
+build
+# Ignore the build output directory
+dist
+# Ignore the test output directory
+coverage
+# Ignore the log files
+*.log
+# Ignore the environment variable files
+.env
+# Ignore the Dockerfile itself
+Dockerfile
+# Ignore the Docker Compose file
+docker-compose.yml
+# Ignore the .git directory
+.git
+# Ignore the .gitignore file
+.gitignore
+# Ignore the .vscode directory
+.vscode
+# Ignore the IDE configuration files
+.idea
+# Ignore the editor configuration files
+.editorconfig

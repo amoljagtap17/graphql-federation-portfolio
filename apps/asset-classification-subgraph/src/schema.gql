@@ -1,0 +1,20 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Broad Asset Class"""
+type BroadAssetClass {
+  """Description of the broad asset class"""
+  description: String!
+
+  """Unique identifier for the broad asset class"""
+  id: ID!
+
+  """Name of the broad asset class"""
+  name: String!
+}
+
+type Query {
+  broadAssetClass(id: ID!): BroadAssetClass!
+  broadAssetClasses: [BroadAssetClass!]!
+}

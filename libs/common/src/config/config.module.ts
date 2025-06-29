@@ -14,6 +14,11 @@ import * as Joi from "joi";
 				DATABASE_NAME: Joi.string().required(),
 				DATABASE_SYNCHRONIZE: Joi.boolean().default(true),
 				DATABASE_AUTO_LOAD_ENTITIES: Joi.boolean().default(true),
+				ASSET_CLASSIFICATION_GRAPHQL_URL: Joi.string().uri().required(),
+				NODE_ENV: Joi.string().valid("development", "production", "test").default("development"),
+				LOG_LEVEL: Joi.string()
+					.valid("fatal", "error", "warn", "info", "debug", "trace")
+					.default("info"),
 			}),
 		}),
 	],

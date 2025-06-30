@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { FirmSubgraphController } from './firm-subgraph.controller';
-import { FirmSubgraphService } from './firm-subgraph.service';
+import { Module } from "@nestjs/common";
+import { FirmModule } from "./firm/firm.module";
+import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [],
-  controllers: [FirmSubgraphController],
-  providers: [FirmSubgraphService],
+	imports: [FirmModule, UserModule],
+	controllers: [],
+	providers: [],
 })
 export class FirmSubgraphModule {}

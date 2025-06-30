@@ -28,6 +28,15 @@
         "tsConfigPath": "libs/common/tsconfig.lib.json"
       }
     },
+    "firm-subgraph": {
+      "type": "application",
+      "root": "apps/firm-subgraph",
+      "entryFile": "main",
+      "sourceRoot": "apps/firm-subgraph/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/firm-subgraph/tsconfig.app.json"
+      }
+    },
     "gateway": {
       "type": "application",
       "root": "apps/gateway",

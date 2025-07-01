@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Firm entity representing a financial firm or institution"""
+type Firm {
+  """Unique identifier for the firm"""
+  id: ID!
+
+  """Name of the firm"""
+  name: String!
+
+  """Users associated with the firm"""
+  users: [User!]!
+}
+
+type Query {
+  firm(id: ID!): Firm!
+  user(id: ID!): User!
+}
+
+"""User entity representing a user in the system"""
+type User {
+  """Display name of the user"""
+  displayName: String
+
+  """Email of the user"""
+  email: String!
+
+  """Firm associated with the user"""
+  firm: Firm!
+
+  """Unique identifier for the user"""
+  id: ID!
+
+  """Username of the user"""
+  username: String!
+}

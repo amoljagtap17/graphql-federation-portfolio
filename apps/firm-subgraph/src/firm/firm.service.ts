@@ -1,26 +1,16 @@
-import { Injectable } from '@nestjs/common';
-import { CreateFirmInput } from './dto/create-firm.input';
-import { UpdateFirmInput } from './dto/update-firm.input';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Firm } from "./entities/firm.entity";
 
 @Injectable()
 export class FirmService {
-  create(createFirmInput: CreateFirmInput) {
-    return 'This action adds a new firm';
-  }
+	constructor(
+		@InjectRepository(Firm)
+		private readonly firmsRepository: Repository<Firm>,
+	) {}
 
-  findAll() {
-    return `This action returns all firm`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} firm`;
-  }
-
-  update(id: number, updateFirmInput: UpdateFirmInput) {
-    return `This action updates a #${id} firm`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} firm`;
-  }
+	async findOne(id: string): Promise<Firm | null> {
+		return this.firmsRepository.findOne({ where: { id }, relations: ["users"] });
+	}
 }

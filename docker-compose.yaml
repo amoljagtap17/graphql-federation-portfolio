@@ -15,6 +15,22 @@ services:
     depends_on:
       - postgres
     restart: unless-stopped
+  firm:
+    build:
+      context: .
+      dockerfile: ./apps/firm-subgraph/Dockerfile
+      target: development
+    container_name: firm-subgraph
+    ports:
+      - "3002:3002"
+    env_file: ./apps/firm-subgraph/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - postgres
+    restart: unless-stopped
   gateway:
     build:
       context: .
@@ -30,6 +46,8 @@ services:
       - postgres-network
     depends_on:
       - asset-classification
+      - firm-subgraph
+      - postgres
     restart: unless-stopped
   postgres:
     image: postgres:latest

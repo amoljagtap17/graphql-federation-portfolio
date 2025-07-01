@@ -28,6 +28,10 @@ import { GraphQLModule } from "@nestjs/graphql";
 								name: "classsification",
 								url: configService.get<string>("ASSET_CLASSIFICATION_GRAPHQL_URL"),
 							},
+							{
+								name: "firm",
+								url: configService.get<string>("FIRM_GRAPHQL_URL"),
+							},
 						],
 						subgraphHealthCheck: true,
 					}),

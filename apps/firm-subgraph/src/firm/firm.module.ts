@@ -1,8 +1,11 @@
-import { Module } from '@nestjs/common';
-import { FirmService } from './firm.service';
-import { FirmResolver } from './firm.resolver';
+import { DatabaseModule } from "@app/common";
+import { Module } from "@nestjs/common";
+import { Firm } from "./entities/firm.entity";
+import { FirmResolver } from "./firm.resolver";
+import { FirmService } from "./firm.service";
 
 @Module({
-  providers: [FirmResolver, FirmService],
+	imports: [DatabaseModule, DatabaseModule.forFeature([Firm])],
+	providers: [FirmResolver, FirmService],
 })
 export class FirmModule {}

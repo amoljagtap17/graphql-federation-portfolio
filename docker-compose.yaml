@@ -46,7 +46,7 @@ services:
       - postgres-network
     depends_on:
       - asset-classification
-      - firm-subgraph
+      - firm
       - postgres
     restart: unless-stopped
   postgres:

@@ -1,12 +1,10 @@
-import { Module } from '@nestjs/common';
-import { ClientSubgraphController } from './client-subgraph.controller';
-import { ClientSubgraphService } from './client-subgraph.service';
-import { ClientModule } from './client/client.module';
-import { AccountModule } from './account/account.module';
+import { Module } from "@nestjs/common";
+import { AccountModule } from "./account/account.module";
+import { ClientModule } from "./client/client.module";
 
 @Module({
-  imports: [ClientModule, AccountModule],
-  controllers: [ClientSubgraphController],
-  providers: [ClientSubgraphService],
+	imports: [ClientModule, AccountModule],
+	controllers: [],
+	providers: [],
 })
 export class ClientSubgraphModule {}

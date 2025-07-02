@@ -1,9 +1,33 @@
+import { ApolloServerPluginLandingPageLocalDefault } from "@apollo/server/plugin/landingPage/default";
+import { LoggerModule } from "@app/common";
+import { ApolloFederationDriver, ApolloFederationDriverConfig } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
+import { GraphQLModule } from "@nestjs/graphql";
+import { join } from "path";
 import { AccountModule } from "./account/account.module";
+import { Client } from "./account/entities/client.entity";
 import { ClientModule } from "./client/client.module";
 
 @Module({
-	imports: [ClientModule, AccountModule],
+	imports: [
+		GraphQLModule.forRoot<ApolloFederationDriverConfig>({
+			driver: ApolloFederationDriver,
+			autoSchemaFile: {
+				federation: 2,
+				path: join(process.cwd(), "apps/client-subgraph", "src/schema.gql"),
+			},
+			buildSchemaOptions: {
+				orphanedTypes: [Client],
+			},
+			playground: false,
+			sortSchema: true,
+			graphiql: false,
+			plugins: [ApolloServerPluginLandingPageLocalDefault()],
+		}),
+		ClientModule,
+		AccountModule,
+		LoggerModule,
+	],
 	controllers: [],
 	providers: [],
 })

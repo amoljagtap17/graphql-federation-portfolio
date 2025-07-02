@@ -31,6 +31,23 @@ services:
     depends_on:
       - postgres
     restart: unless-stopped
+  client:
+    build:
+      context: .
+      dockerfile: ./apps/client-subgraph/Dockerfile
+      target: development
+    container_name: client-subgraph
+    ports:
+      - "3003:3003"
+    env_file: ./apps/client-subgraph/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - firm
+      - postgres
+    restart: unless-stopped
   gateway:
     build:
       context: .
@@ -47,6 +64,7 @@ services:
     depends_on:
       - asset-classification
       - firm
+      - client
       - postgres
     restart: unless-stopped
   postgres:

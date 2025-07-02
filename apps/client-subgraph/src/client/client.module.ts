@@ -1,8 +1,11 @@
-import { Module } from '@nestjs/common';
-import { ClientService } from './client.service';
-import { ClientResolver } from './client.resolver';
+import { DatabaseModule } from "@app/common";
+import { Module } from "@nestjs/common";
+import { ClientResolver } from "./client.resolver";
+import { ClientService } from "./client.service";
+import { Client } from "./entities/client.entity";
 
 @Module({
-  providers: [ClientResolver, ClientService],
+	imports: [DatabaseModule, DatabaseModule.forFeature([Client])],
+	providers: [ClientResolver, ClientService],
 })
 export class ClientModule {}

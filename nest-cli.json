@@ -19,6 +19,15 @@
         "tsConfigPath": "apps/asset-classification-subgraph/tsconfig.app.json"
       }
     },
+    "client-subgraph": {
+      "type": "application",
+      "root": "apps/client-subgraph",
+      "entryFile": "main",
+      "sourceRoot": "apps/client-subgraph/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/client-subgraph/tsconfig.app.json"
+      }
+    },
     "common": {
       "type": "library",
       "root": "libs/common",

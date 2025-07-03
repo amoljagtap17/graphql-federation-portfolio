@@ -54,6 +54,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/gateway/tsconfig.app.json"
       }
+    },
+    "holding-subgraph": {
+      "type": "application",
+      "root": "apps/holding-subgraph",
+      "entryFile": "main",
+      "sourceRoot": "apps/holding-subgraph/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/holding-subgraph/tsconfig.app.json"
+      }
     }
   }
 }

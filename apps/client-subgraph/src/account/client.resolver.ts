@@ -1,7 +1,7 @@
 import { Parent, ResolveField, Resolver } from "@nestjs/graphql";
+import { Client } from "../client/entities/client.entity";
 import { AccountService } from "./account.service";
 import { Account } from "./entities/account.entity";
-import { Client } from "./entities/client.entity";
 
 @Resolver(() => Client)
 export class ClientResolver {

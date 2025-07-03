@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Account entity representing a financial account in the system"""
+type Account {
+  """Account number"""
+  accountNumber: String!
+
+  """Type of the account"""
+  accountType: String!
+
+  """Client associated with the account"""
+  client: Client!
+
+  """Unique identifier for the account"""
+  id: ID!
+}
+
+"""Client entity representing a client in the system"""
+type Client {
+  """Accounts associated with the client"""
+  accounts: [Account!]!
+
+  """Unique identifier for the client"""
+  id: ID!
+
+  """Name of the client"""
+  name: String!
+}

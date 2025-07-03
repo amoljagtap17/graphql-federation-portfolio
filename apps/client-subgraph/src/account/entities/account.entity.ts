@@ -1,6 +1,6 @@
 import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { Client } from "./client.entity";
+import { Client } from "../../client/entities/client.entity";
 
 @ObjectType({ description: "Account entity representing a financial account in the system" })
 @Directive('@key(fields: "id")')

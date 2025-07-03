@@ -8,5 +8,6 @@ import { FirmResolver } from "./firm.resolver";
 @Module({
 	imports: [DatabaseModule, DatabaseModule.forFeature([Client])],
 	providers: [ClientResolver, FirmResolver, ClientService],
+	exports: [ClientService],
 })
 export class ClientModule {}

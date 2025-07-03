@@ -6,6 +6,7 @@ import { GraphQLModule } from "@nestjs/graphql";
 import { join } from "path";
 import { AccountModule } from "./account/account.module";
 import { ClientModule } from "./client/client.module";
+import { Firm } from "./client/entities/firm.entity";
 
 @Module({
 	imports: [
@@ -14,6 +15,9 @@ import { ClientModule } from "./client/client.module";
 			autoSchemaFile: {
 				federation: 2,
 				path: join(process.cwd(), "apps/client-subgraph", "src/schema.gql"),
+			},
+			buildSchemaOptions: {
+				orphanedTypes: [Firm],
 			},
 			playground: false,
 			sortSchema: true,

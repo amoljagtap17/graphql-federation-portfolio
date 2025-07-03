@@ -13,4 +13,10 @@ export class ClientService {
 	async findClientById(id: string): Promise<Client> {
 		return this.clientRepository.findOneByOrFail({ id });
 	}
+
+	async findClientsForFirm(firmId: string): Promise<Client[]> {
+		return this.clientRepository.find({
+			where: { firmId },
+		});
+	}
 }

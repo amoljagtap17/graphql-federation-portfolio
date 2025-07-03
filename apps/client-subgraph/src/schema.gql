@@ -28,3 +28,12 @@ type Client {
   """Name of the client"""
   name: String!
 }
+
+"""Firm entity representing a financial firm or institution"""
+type Firm {
+  """Clients associated with the firm"""
+  clients: [Client!]!
+
+  """Unique identifier for the firm"""
+  id: ID!
+}

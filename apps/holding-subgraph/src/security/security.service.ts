@@ -1,26 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { CreateSecurityInput } from './dto/create-security.input';
-import { UpdateSecurityInput } from './dto/update-security.input';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Security } from "./entities/security.entity";
 
 @Injectable()
 export class SecurityService {
-  create(createSecurityInput: CreateSecurityInput) {
-    return 'This action adds a new security';
-  }
+	constructor(
+		@InjectRepository(Security)
+		private readonly securityRepository: Repository<Security>,
+	) {}
 
-  findAll() {
-    return `This action returns all security`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} security`;
-  }
-
-  update(id: number, updateSecurityInput: UpdateSecurityInput) {
-    return `This action updates a #${id} security`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} security`;
-  }
+	async findSecurityById(securityId: string): Promise<Security> {
+		return this.securityRepository.findOneOrFail({
+			where: { id: securityId },
+		});
+	}
 }

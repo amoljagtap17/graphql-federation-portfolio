@@ -1,0 +1,66 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+"""Holding entity representing a financial holding in the system"""
+type Holding {
+  """Account ID associated with the holding"""
+  accountId: String!
+
+  """Date when the holding was last updated"""
+  asOfDate: DateTime!
+
+  """Currency of the holding"""
+  currency: String!
+
+  """Unique identifier for the holding"""
+  id: ID!
+
+  """Market value of the holding"""
+  marketValue: Float!
+
+  """Price of the holding"""
+  price: Float!
+
+  """Quantity of the holding"""
+  quantity: Float!
+
+  """Security associated with the holding"""
+  security: Security!
+}
+
+type Query {
+  """Get all holdings for a specific account"""
+  holdingsByAccount(accountId: ID!): [Holding!]!
+}
+
+"""Security entity representing a financial security in the system"""
+type Security {
+  """Currency of the security"""
+  currency: String!
+
+  """
+  CUSIP (Committee on Uniform Securities Identification Procedures) of the security
+  """
+  cusip: String!
+
+  """Unique identifier for the security"""
+  id: ID!
+
+  """ISIN (International Securities Identification Number) of the security"""
+  isin: String!
+
+  """Name of the security"""
+  name: String!
+
+  """Type of the security (e.g., stock, bond)"""
+  securityType: String!
+
+  """Ticker symbol of the security"""
+  ticker: String!
+}

@@ -1,7 +1,41 @@
-import { ObjectType, Field, Int } from '@nestjs/graphql';
+import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@ObjectType()
+@ObjectType({ description: "Security entity representing a financial security in the system" })
+@Directive('@key(fields: "id")')
+@Entity({ name: "securities" })
 export class Security {
-  @Field(() => Int, { description: 'Example field (placeholder)' })
-  exampleField: number;
+	@Field(() => ID, { description: "Unique identifier for the security" })
+	@PrimaryGeneratedColumn("uuid")
+	id: string;
+
+	@Field({ description: "Name of the security" })
+	@Column({ unique: true })
+	name: string;
+
+	@Field({ description: "Ticker symbol of the security" })
+	@Column({ unique: true })
+	ticker: string;
+
+	@Field({ description: "Type of the security (e.g., stock, bond)" })
+	@Column()
+	securityType: string;
+
+	@Field({ description: "Currency of the security" })
+	@Column()
+	currency: string;
+
+	@Field({ description: "ISIN (International Securities Identification Number) of the security" })
+	@Column({ unique: true })
+	isin: string;
+
+	@Field({
+		description:
+			"CUSIP (Committee on Uniform Securities Identification Procedures) of the security",
+	})
+	@Column({ unique: true })
+	cusip: string;
+
+	@Column({ name: "asset_allocation_id" })
+	assetAllocationId: string;
 }

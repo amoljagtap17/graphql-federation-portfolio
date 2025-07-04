@@ -1,35 +1,31 @@
-import { Resolver, Query, Mutation, Args, Int } from '@nestjs/graphql';
-import { HoldingService } from './holding.service';
-import { Holding } from './entities/holding.entity';
-import { CreateHoldingInput } from './dto/create-holding.input';
-import { UpdateHoldingInput } from './dto/update-holding.input';
+import { Args, ID, Parent, Query, ResolveField, Resolver } from "@nestjs/graphql";
+import { Security } from "../security/entities/security.entity";
+import { SecurityService } from "../security/security.service";
+import { Holding } from "./entities/holding.entity";
+import { HoldingService } from "./holding.service";
 
 @Resolver(() => Holding)
 export class HoldingResolver {
-  constructor(private readonly holdingService: HoldingService) {}
+	constructor(
+		private readonly holdingService: HoldingService,
+		private readonly securityService: SecurityService,
+	) {}
 
-  @Mutation(() => Holding)
-  createHolding(@Args('createHoldingInput') createHoldingInput: CreateHoldingInput) {
-    return this.holdingService.create(createHoldingInput);
-  }
+	@Query(() => [Holding], {
+		name: "holdingsByAccount",
+		description: "Get all holdings for a specific account",
+	})
+	async holdingsByAccount(
+		@Args("accountId", { type: () => ID }) accountId: string,
+	): Promise<Holding[]> {
+		return this.holdingService.getHoldingsByAccountId(accountId);
+	}
 
-  @Query(() => [Holding], { name: 'holding' })
-  findAll() {
-    return this.holdingService.findAll();
-  }
-
-  @Query(() => Holding, { name: 'holding' })
-  findOne(@Args('id', { type: () => Int }) id: number) {
-    return this.holdingService.findOne(id);
-  }
-
-  @Mutation(() => Holding)
-  updateHolding(@Args('updateHoldingInput') updateHoldingInput: UpdateHoldingInput) {
-    return this.holdingService.update(updateHoldingInput.id, updateHoldingInput);
-  }
-
-  @Mutation(() => Holding)
-  removeHolding(@Args('id', { type: () => Int }) id: number) {
-    return this.holdingService.remove(id);
-  }
+	@ResolveField(() => Security, {
+		name: "security",
+		description: "The security associated with the holding",
+	})
+	security(@Parent() holding: Holding): Promise<Security> {
+		return this.securityService.findSecurityById(holding.securityId);
+	}
 }

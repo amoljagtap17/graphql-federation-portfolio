@@ -67,6 +67,25 @@ services:
       - client
       - postgres
     restart: unless-stopped
+  performance:
+    build:
+      context: .
+      dockerfile: ./apps/performance-subgraph/Dockerfile
+      target: development
+    container_name: performance-subgraph
+    ports:
+      - "3005:3005"
+    env_file: ./apps/performance-subgraph/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - asset-classification
+      - firm
+      - client
+      - postgres
+    restart: unless-stopped
   gateway:
     build:
       context: .
@@ -86,6 +105,7 @@ services:
       - client
       - holding
       - postgres
+      - performance
     restart: unless-stopped
   postgres:
     image: postgres:latest

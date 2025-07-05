@@ -6,7 +6,7 @@ import { join } from "path";
 import { AssetAllocationModule } from "./asset-allocation/asset-allocation.module";
 import { AssetClass } from "./asset-allocation/entities/asset-class.entity";
 import { BroadAssetClass } from "./asset-allocation/entities/broad-asset-class.entity";
-import { StyleClass } from "./asset-allocation/entities/style-class.entity";
+import { Style } from "./asset-allocation/entities/style-class.entity";
 import { SubClass } from "./asset-allocation/entities/sub-class.entity";
 import { HoldingModule } from "./holding/holding.module";
 import { SecurityModule } from "./security/security.module";
@@ -20,7 +20,7 @@ import { SecurityModule } from "./security/security.module";
 				path: join(process.cwd(), "apps/holding-subgraph", "src/schema.gql"),
 			},
 			buildSchemaOptions: {
-				orphanedTypes: [BroadAssetClass, AssetClass, SubClass, StyleClass],
+				orphanedTypes: [BroadAssetClass, AssetClass, SubClass, Style],
 			},
 			playground: false,
 			sortSchema: true,

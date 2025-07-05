@@ -3,7 +3,7 @@ import { AssetAllocationService } from "./asset-allocation.service";
 import { AssetAllocation } from "./entities/asset-allocation.entity";
 import { AssetClass } from "./entities/asset-class.entity";
 import { BroadAssetClass } from "./entities/broad-asset-class.entity";
-import { StyleClass } from "./entities/style-class.entity";
+import { Style } from "./entities/style-class.entity";
 import { SubClass } from "./entities/sub-class.entity";
 
 @Resolver(() => AssetAllocation)
@@ -34,7 +34,7 @@ export class AssetAllocationResolver {
 		return { __typename: "SubClass", id: assetAllocation.subClassId };
 	}
 
-	@ResolveField(() => StyleClass, {
+	@ResolveField(() => Style, {
 		name: "style",
 		description: "The style class associated with the asset allocation",
 	})

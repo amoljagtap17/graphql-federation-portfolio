@@ -2,7 +2,7 @@ import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { AssetClass } from "./asset-class.entity";
 import { BroadAssetClass } from "./broad-asset-class.entity";
-import { StyleClass } from "./style-class.entity";
+import { Style } from "./style-class.entity";
 import { SubClass } from "./sub-class.entity";
 
 @ObjectType({
@@ -42,8 +42,8 @@ export class AssetAllocation {
 	})
 	subClass: SubClass;
 
-	@Field(() => StyleClass, {
+	@Field(() => Style, {
 		description: "The style class associated with the asset allocation",
 	})
-	style: StyleClass;
+	style: Style;
 }

@@ -5,7 +5,7 @@ import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
 		"Style Class entity representing a classification of financial assets based on investment style",
 })
 @Directive('@key(fields: "id")')
-export class StyleClass {
+export class Style {
 	@Field(() => ID, { description: "Unique identifier for the style class" })
 	id: string;
 }

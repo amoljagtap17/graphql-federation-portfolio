@@ -10,6 +10,8 @@ import { User } from "../apps/firm-subgraph/src/user/entities/user.entity";
 import { AssetAllocation } from "../apps/holding-subgraph/src/asset-allocation/entities/asset-allocation.entity";
 import { Holding } from "../apps/holding-subgraph/src/holding/entities/holding.entity";
 import { Security } from "../apps/holding-subgraph/src/security/entities/security.entity";
+import { Benchmark } from "../apps/performance-subgraph/src/benchmark/entities/benchmark.entity";
+import { PerformanceReturn } from "../apps/performance-subgraph/src/performance-return/entities/performance-return.entity";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",
@@ -30,6 +32,8 @@ export const AppDataSource = new DataSource({
 		AssetAllocation,
 		Security,
 		Holding,
+		Benchmark,
+		PerformanceReturn,
 	],
 });
 
@@ -37,10 +41,12 @@ export {
 	Account,
 	AssetAllocation,
 	AssetClass,
+	Benchmark,
 	BroadAssetClass,
 	Client,
 	Firm,
 	Holding,
+	PerformanceReturn,
 	Security,
 	Style,
 	SubClass,

@@ -36,6 +36,7 @@ import { GraphQLModule } from "@nestjs/graphql";
 								name: "client",
 								url: configService.get<string>("CLIENT_GRAPHQL_URL"),
 							},
+							{ name: "holding", url: configService.get<string>("HOLDING_GRAPHQL_URL") },
 						],
 						subgraphHealthCheck: true,
 					}),

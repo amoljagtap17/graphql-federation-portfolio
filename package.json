@@ -20,7 +20,8 @@
 		"test:e2e": "jest --config ./apps/gateway/test/jest-e2e.json",
 		"seed:asset-classification": "npx ts-node ./scripts/seedAssetClassification.ts",
 		"seed:firm": "npx ts-node ./scripts/seedFirm.ts",
-		"seed:client": "npx ts-node ./scripts/seedClient.ts"
+		"seed:client": "npx ts-node ./scripts/seedClient.ts",
+		"seed:holding": "npx ts-node ./scripts/seedHolding.ts"
 	},
 	"dependencies": {
 		"@apollo/gateway": "^2.11.2",

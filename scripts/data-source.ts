@@ -7,6 +7,9 @@ import { Account } from "../apps/client-subgraph/src/account/entities/account.en
 import { Client } from "../apps/client-subgraph/src/client/entities/client.entity";
 import { Firm } from "../apps/firm-subgraph/src/firm/entities/firm.entity";
 import { User } from "../apps/firm-subgraph/src/user/entities/user.entity";
+import { AssetAllocation } from "../apps/holding-subgraph/src/asset-allocation/entities/asset-allocation.entity";
+import { Holding } from "../apps/holding-subgraph/src/holding/entities/holding.entity";
+import { Security } from "../apps/holding-subgraph/src/security/entities/security.entity";
 
 export const AppDataSource = new DataSource({
 	type: "postgres",
@@ -15,7 +18,31 @@ export const AppDataSource = new DataSource({
 	username: "superadminuser",
 	password: "superadminpassword",
 	database: "porfolio_wealth",
-	entities: [Firm, User, Client, Account, BroadAssetClass, AssetClass, SubClass, Style],
+	entities: [
+		Firm,
+		User,
+		Client,
+		Account,
+		BroadAssetClass,
+		AssetClass,
+		SubClass,
+		Style,
+		AssetAllocation,
+		Security,
+		Holding,
+	],
 });
 
-export { Account, AssetClass, BroadAssetClass, Client, Firm, Style, SubClass, User };
+export {
+	Account,
+	AssetAllocation,
+	AssetClass,
+	BroadAssetClass,
+	Client,
+	Firm,
+	Holding,
+	Security,
+	Style,
+	SubClass,
+	User,
+};

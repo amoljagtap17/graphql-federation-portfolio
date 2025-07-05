@@ -6,14 +6,13 @@ import { BroadAssetClass } from "./entities/broad-asset-class.entity";
 @Injectable()
 export class BroadAssetClassService {
 	constructor(
-		@InjectRepository(BroadAssetClass) private readonly repo: Repository<BroadAssetClass>,
+		@InjectRepository(BroadAssetClass)
+		private readonly broadAssetClassRepository: Repository<BroadAssetClass>,
 	) {}
 
-	async findAll(): Promise<BroadAssetClass[]> {
-		return this.repo.find();
-	}
-
-	async findOne(id: string): Promise<BroadAssetClass | null> {
-		return this.repo.findOneBy({ id });
+	async getBroadAssetClassById(id: string): Promise<BroadAssetClass | null> {
+		return this.broadAssetClassRepository.findOneBy({
+			id,
+		});
 	}
 }

@@ -2,19 +2,88 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""Asset Class"""
+type AssetClass {
+  """Code for the asset class"""
+  code: String!
+
+  """Description of the asset class"""
+  description: String
+
+  """Unique identifier for the asset class"""
+  id: ID!
+
+  """Label for the asset class"""
+  label: String!
+}
+
 """Broad Asset Class"""
 type BroadAssetClass {
+  """Code for the broad asset class"""
+  code: String!
+
   """Description of the broad asset class"""
-  description: String!
+  description: String
 
   """Unique identifier for the broad asset class"""
   id: ID!
 
-  """Name of the broad asset class"""
-  name: String!
+  """Label for the broad asset class"""
+  label: String!
 }
 
 type Query {
-  broadAssetClass(id: ID!): BroadAssetClass!
-  broadAssetClasses: [BroadAssetClass!]!
+  """Get an asset class by its ID"""
+  assetClass(
+    """ID of the asset class"""
+    id: ID!
+  ): AssetClass!
+
+  """Get a broad asset class by its ID"""
+  broadAssetClass(
+    """ID of the broad asset class"""
+    id: ID!
+  ): BroadAssetClass!
+
+  """Get a style by its ID"""
+  style(
+    """ID of the style"""
+    id: ID!
+  ): Style!
+
+  """Get a sub-class by its ID"""
+  subClass(
+    """ID of the sub-class"""
+    id: ID!
+  ): SubClass!
+}
+
+"""Style Entity"""
+type Style {
+  """Code for the style class"""
+  code: String!
+
+  """Description of the style class"""
+  description: String
+
+  """Unique identifier for the style class"""
+  id: ID!
+
+  """Label for the style class"""
+  label: String!
+}
+
+"""Sub Class Entity"""
+type SubClass {
+  """Code for the sub class"""
+  code: String!
+
+  """Description of the sub class"""
+  description: String
+
+  """Unique identifier for the sub class"""
+  id: ID!
+
+  """Label for the sub class"""
+  label: String!
 }

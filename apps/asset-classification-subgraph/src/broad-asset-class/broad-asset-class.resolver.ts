@@ -1,4 +1,4 @@
-import { Args, ID, Query, Resolver } from "@nestjs/graphql";
+import { Args, ID, Query, Resolver, ResolveReference } from "@nestjs/graphql";
 import { BroadAssetClassService } from "./broad-asset-class.service";
 import { BroadAssetClass } from "./entities/broad-asset-class.entity";
 
@@ -6,13 +6,18 @@ import { BroadAssetClass } from "./entities/broad-asset-class.entity";
 export class BroadAssetClassResolver {
 	constructor(private readonly broadAssetClassService: BroadAssetClassService) {}
 
-	@Query(() => [BroadAssetClass], { name: "broadAssetClasses" })
-	async findAll(): Promise<BroadAssetClass[]> {
-		return this.broadAssetClassService.findAll();
+	@Query(() => BroadAssetClass, {
+		name: "broadAssetClass",
+		description: "Get a broad asset class by its ID",
+	})
+	async getBroadAssetClassById(
+		@Args("id", { type: () => ID, description: "ID of the broad asset class" }) id: string,
+	): Promise<BroadAssetClass | null> {
+		return this.broadAssetClassService.getBroadAssetClassById(id);
 	}
 
-	@Query(() => BroadAssetClass, { name: "broadAssetClass" })
-	async findOne(@Args("id", { type: () => ID }) id: string): Promise<BroadAssetClass | null> {
-		return this.broadAssetClassService.findOne(id);
+	@ResolveReference()
+	resolveReference(reference: { __typename: string; id: string }): Promise<BroadAssetClass | null> {
+		return this.broadAssetClassService.getBroadAssetClassById(reference.id);
 	}
 }

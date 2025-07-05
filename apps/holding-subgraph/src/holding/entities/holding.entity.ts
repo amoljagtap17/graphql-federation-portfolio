@@ -10,7 +10,6 @@ export class Holding {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 
-	@Field({ description: "Account ID associated with the holding" })
 	@Column({ name: "account_id" })
 	accountId: string;
 
@@ -28,10 +27,6 @@ export class Holding {
 	@Field(() => Float, { description: "Price of the holding" })
 	@Column({ type: "decimal", precision: 20, scale: 2 })
 	price: number;
-
-	@Field({ description: "Currency of the holding" })
-	@Column({ type: "varchar", length: 3 })
-	currency: string;
 
 	@Field(() => Date, { description: "Date when the holding was last updated" })
 	@Column({ type: "timestamp" })

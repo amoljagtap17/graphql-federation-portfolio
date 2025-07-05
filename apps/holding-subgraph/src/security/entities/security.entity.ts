@@ -21,10 +21,6 @@ export class Security {
 	@Column()
 	securityType: string;
 
-	@Field({ description: "Currency of the security" })
-	@Column()
-	currency: string;
-
 	@Field({ description: "ISIN (International Securities Identification Number) of the security" })
 	@Column({ unique: true })
 	isin: string;

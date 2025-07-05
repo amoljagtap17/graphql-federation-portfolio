@@ -9,14 +9,8 @@ scalar DateTime
 
 """Holding entity representing a financial holding in the system"""
 type Holding {
-  """Account ID associated with the holding"""
-  accountId: String!
-
   """Date when the holding was last updated"""
   asOfDate: DateTime!
-
-  """Currency of the holding"""
-  currency: String!
 
   """Unique identifier for the holding"""
   id: ID!
@@ -41,9 +35,6 @@ type Query {
 
 """Security entity representing a financial security in the system"""
 type Security {
-  """Currency of the security"""
-  currency: String!
-
   """
   CUSIP (Committee on Uniform Securities Identification Procedures) of the security
   """

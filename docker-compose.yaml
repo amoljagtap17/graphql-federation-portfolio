@@ -48,6 +48,25 @@ services:
       - firm
       - postgres
     restart: unless-stopped
+  holding:
+    build:
+      context: .
+      dockerfile: ./apps/holding-subgraph/Dockerfile
+      target: development
+    container_name: holding-subgraph
+    ports:
+      - "3004:3004"
+    env_file: ./apps/holding-subgraph/.env
+    volumes:
+      - .:/usr/src/app
+    networks:
+      - postgres-network
+    depends_on:
+      - asset-classification
+      - firm
+      - client
+      - postgres
+    restart: unless-stopped
   gateway:
     build:
       context: .

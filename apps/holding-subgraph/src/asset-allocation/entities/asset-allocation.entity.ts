@@ -1,5 +1,9 @@
 import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { AssetClass } from "./asset-class.entity";
+import { BroadAssetClass } from "./broad-asset-class.entity";
+import { StyleClass } from "./style-class.entity";
+import { SubClass } from "./sub-class.entity";
 
 @ObjectType({
 	description: "Asset Allocation entity representing a financial asset allocation in the system",
@@ -22,4 +26,24 @@ export class AssetAllocation {
 
 	@Column()
 	styleId: string;
+
+	@Field(() => BroadAssetClass, {
+		description: "The broad asset class associated with the asset allocation",
+	})
+	broadAssetClass: BroadAssetClass;
+
+	@Field(() => AssetClass, {
+		description: "The asset class associated with the asset allocation",
+	})
+	assetClass: AssetClass;
+
+	@Field(() => SubClass, {
+		description: "The sub class associated with the asset allocation",
+	})
+	subClass: SubClass;
+
+	@Field(() => StyleClass, {
+		description: "The style class associated with the asset allocation",
+	})
+	style: StyleClass;
 }

@@ -3,6 +3,40 @@
 # ------------------------------------------------------
 
 """
+Asset Allocation entity representing a financial asset allocation in the system
+"""
+type AssetAllocation {
+  """The asset class associated with the asset allocation"""
+  assetClass: AssetClass!
+
+  """The broad asset class associated with the asset allocation"""
+  broadAssetClass: BroadAssetClass!
+
+  """Unique identifier for the asset allocation"""
+  id: ID!
+
+  """The style class associated with the asset allocation"""
+  style: StyleClass!
+
+  """The sub class associated with the asset allocation"""
+  subClass: SubClass!
+}
+
+"""Asset Class entity representing a broad category of financial assets"""
+type AssetClass {
+  """Unique identifier for the asset class"""
+  id: ID!
+}
+
+"""
+Broad Asset Class entity representing a high-level classification of financial assets
+"""
+type BroadAssetClass {
+  """Unique identifier for the broad asset class"""
+  id: ID!
+}
+
+"""
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
@@ -35,6 +69,9 @@ type Query {
 
 """Security entity representing a financial security in the system"""
 type Security {
+  """Asset allocation associated with the security"""
+  assetAllocation: AssetAllocation!
+
   """
   CUSIP (Committee on Uniform Securities Identification Procedures) of the security
   """
@@ -54,4 +91,20 @@ type Security {
 
   """Ticker symbol of the security"""
   ticker: String!
+}
+
+"""
+Style Class entity representing a classification of financial assets based on investment style
+"""
+type StyleClass {
+  """Unique identifier for the style class"""
+  id: ID!
+}
+
+"""
+Sub Class entity representing a specific category of financial assets within an asset class
+"""
+type SubClass {
+  """Unique identifier for the sub class"""
+  id: ID!
 }

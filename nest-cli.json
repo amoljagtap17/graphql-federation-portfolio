@@ -63,6 +63,15 @@
       "compilerOptions": {
         "tsConfigPath": "apps/holding-subgraph/tsconfig.app.json"
       }
+    },
+    "performance-subgraph": {
+      "type": "application",
+      "root": "apps/performance-subgraph",
+      "entryFile": "main",
+      "sourceRoot": "apps/performance-subgraph/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/performance-subgraph/tsconfig.app.json"
+      }
     }
   }
 }

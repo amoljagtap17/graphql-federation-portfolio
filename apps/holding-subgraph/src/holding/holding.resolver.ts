@@ -25,7 +25,7 @@ export class HoldingResolver {
 		name: "security",
 		description: "The security associated with the holding",
 	})
-	security(@Parent() holding: Holding): Promise<Security> {
+	security(@Parent() holding: Holding): Promise<Security | null> {
 		return this.securityService.findSecurityById(holding.securityId);
 	}
 }

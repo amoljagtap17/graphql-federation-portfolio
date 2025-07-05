@@ -10,9 +10,9 @@ export class SecurityService {
 		private readonly securityRepository: Repository<Security>,
 	) {}
 
-	async findSecurityById(securityId: string): Promise<Security> {
-		return this.securityRepository.findOneOrFail({
-			where: { id: securityId },
+	async findSecurityById(id: string): Promise<Security | null> {
+		return this.securityRepository.findOneBy({
+			id,
 		});
 	}
 }

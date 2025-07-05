@@ -1,5 +1,6 @@
 import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { AssetAllocation } from "../../asset-allocation/entities/asset-allocation.entity";
 
 @ObjectType({ description: "Security entity representing a financial security in the system" })
 @Directive('@key(fields: "id")')
@@ -34,4 +35,9 @@ export class Security {
 
 	@Column({ name: "asset_allocation_id" })
 	assetAllocationId: string;
+
+	@Field(() => AssetAllocation, {
+		description: "Asset allocation associated with the security",
+	})
+	assetAllocation: AssetAllocation;
 }

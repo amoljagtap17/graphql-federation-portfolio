@@ -9,7 +9,7 @@ export class PerformanceReturn {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 
-	@Field(() => String, {
+	@Field({
 		description: "The entity type for which the performance return is calculated",
 	})
 	@Column({ name: "entity_type" })

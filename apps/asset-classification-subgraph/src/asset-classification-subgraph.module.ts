@@ -5,6 +5,9 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { join } from "path";
 import { BroadAssetClassModule } from "./broad-asset-class/broad-asset-class.module";
+import { AssetClassModule } from './asset-class/asset-class.module';
+import { SubClassModule } from './sub-class/sub-class.module';
+import { StyleModule } from './style/style.module';
 
 @Module({
 	imports: [
@@ -21,6 +24,9 @@ import { BroadAssetClassModule } from "./broad-asset-class/broad-asset-class.mod
 		}),
 		BroadAssetClassModule,
 		LoggerModule,
+		AssetClassModule,
+		SubClassModule,
+		StyleModule,
 	],
 	controllers: [],
 	providers: [],

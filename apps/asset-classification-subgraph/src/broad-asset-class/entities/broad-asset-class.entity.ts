@@ -9,11 +9,15 @@ export class BroadAssetClass {
 	@PrimaryGeneratedColumn("uuid")
 	id: string;
 
-	@Field({ description: "Name of the broad asset class" })
+	@Field({ description: "Code for the broad asset class" })
 	@Column({ unique: true })
-	name: string;
+	code: string;
 
-	@Field({ description: "Description of the broad asset class" })
+	@Field({ description: "Label for the broad asset class" })
+	@Column({ unique: true })
+	label: string;
+
+	@Field({ description: "Description of the broad asset class", nullable: true })
 	@Column({ nullable: true })
 	description?: string;
 }

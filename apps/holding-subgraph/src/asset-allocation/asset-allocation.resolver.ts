@@ -39,6 +39,6 @@ export class AssetAllocationResolver {
 		description: "The style class associated with the asset allocation",
 	})
 	style(@Parent() assetAllocation: AssetAllocation): any {
-		return { __typename: "StyleClass", id: assetAllocation.styleId };
+		return { __typename: "Style", id: assetAllocation.styleId };
 	}
 }

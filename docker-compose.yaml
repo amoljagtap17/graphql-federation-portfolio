@@ -84,6 +84,7 @@ services:
       - asset-classification
       - firm
       - client
+      - holding
       - postgres
     restart: unless-stopped
   postgres:

@@ -16,7 +16,7 @@ type AssetAllocation {
   id: ID!
 
   """The style class associated with the asset allocation"""
-  style: StyleClass!
+  style: Style!
 
   """The sub class associated with the asset allocation"""
   subClass: SubClass!
@@ -96,7 +96,7 @@ type Security {
 """
 Style Class entity representing a classification of financial assets based on investment style
 """
-type StyleClass {
+type Style {
   """Unique identifier for the style class"""
   id: ID!
 }

@@ -6,6 +6,14 @@ import { SubClassService } from "./sub-class.service";
 export class SubClassResolver {
 	constructor(private readonly subClassService: SubClassService) {}
 
+	@Query(() => [SubClass], {
+		name: "subClasses",
+		description: "Get all sub-classes",
+	})
+	async getAllSubClasses(): Promise<SubClass[]> {
+		return this.subClassService.getAllSubClasses();
+	}
+
 	@Query(() => SubClass, {
 		name: "subClass",
 		description: "Get a sub-class by its ID",

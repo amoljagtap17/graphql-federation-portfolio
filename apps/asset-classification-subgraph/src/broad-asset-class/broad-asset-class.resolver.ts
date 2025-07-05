@@ -6,6 +6,14 @@ import { BroadAssetClass } from "./entities/broad-asset-class.entity";
 export class BroadAssetClassResolver {
 	constructor(private readonly broadAssetClassService: BroadAssetClassService) {}
 
+	@Query(() => [BroadAssetClass], {
+		name: "broadAssetClasses",
+		description: "Get all broad asset classes",
+	})
+	async getBroadAssetClasses(): Promise<BroadAssetClass[]> {
+		return this.broadAssetClassService.getBroadAssetClasses();
+	}
+
 	@Query(() => BroadAssetClass, {
 		name: "broadAssetClass",
 		description: "Get a broad asset class by its ID",

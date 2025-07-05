@@ -10,6 +10,10 @@ export class StyleService {
 		private readonly styleRepository: Repository<Style>,
 	) {}
 
+	async getAllStyles(): Promise<Style[]> {
+		return this.styleRepository.find();
+	}
+
 	async getStyleById(id: string): Promise<Style | null> {
 		return this.styleRepository.findOneBy({
 			id,

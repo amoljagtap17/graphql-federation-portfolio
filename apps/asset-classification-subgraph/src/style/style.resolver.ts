@@ -6,6 +6,14 @@ import { StyleService } from "./style.service";
 export class StyleResolver {
 	constructor(private readonly styleService: StyleService) {}
 
+	@Query(() => [Style], {
+		name: "styles",
+		description: "Get all styles",
+	})
+	async getStyles(): Promise<Style[]> {
+		return this.styleService.getAllStyles();
+	}
+
 	@Query(() => Style, {
 		name: "style",
 		description: "Get a style by its ID",

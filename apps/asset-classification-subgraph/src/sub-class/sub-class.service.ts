@@ -10,6 +10,10 @@ export class SubClassService {
 		private readonly subClassRepository: Repository<SubClass>,
 	) {}
 
+	async getAllSubClasses(): Promise<SubClass[]> {
+		return this.subClassRepository.find();
+	}
+
 	async getSubClassById(id: string): Promise<SubClass | null> {
 		return this.subClassRepository.findOneBy({
 			id,

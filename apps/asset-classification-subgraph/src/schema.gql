@@ -39,11 +39,17 @@ type Query {
     id: ID!
   ): AssetClass!
 
+  """Get all asset classes"""
+  assetClasses: [AssetClass!]!
+
   """Get a broad asset class by its ID"""
   broadAssetClass(
     """ID of the broad asset class"""
     id: ID!
   ): BroadAssetClass!
+
+  """Get all broad asset classes"""
+  broadAssetClasses: [BroadAssetClass!]!
 
   """Get a style by its ID"""
   style(
@@ -51,11 +57,17 @@ type Query {
     id: ID!
   ): Style!
 
+  """Get all styles"""
+  styles: [Style!]!
+
   """Get a sub-class by its ID"""
   subClass(
     """ID of the sub-class"""
     id: ID!
   ): SubClass!
+
+  """Get all sub-classes"""
+  subClasses: [SubClass!]!
 }
 
 """Style Entity"""

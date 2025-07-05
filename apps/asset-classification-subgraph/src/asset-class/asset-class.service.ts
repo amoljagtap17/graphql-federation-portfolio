@@ -10,6 +10,10 @@ export class AssetClassService {
 		private readonly assetClassRepository: Repository<AssetClass>,
 	) {}
 
+	async getAllAssetClasses(): Promise<AssetClass[]> {
+		return this.assetClassRepository.find();
+	}
+
 	async getAssetClassById(id: string): Promise<AssetClass | null> {
 		return this.assetClassRepository.findOneBy({
 			id,

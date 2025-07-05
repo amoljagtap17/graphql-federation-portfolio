@@ -6,6 +6,14 @@ import { AssetClass } from "./entities/asset-class.entity";
 export class AssetClassResolver {
 	constructor(private readonly assetClassService: AssetClassService) {}
 
+	@Query(() => [AssetClass], {
+		name: "assetClasses",
+		description: "Get all asset classes",
+	})
+	async getAllAssetClasses(): Promise<AssetClass[]> {
+		return this.assetClassService.getAllAssetClasses();
+	}
+
 	@Query(() => AssetClass, {
 		name: "assetClass",
 		description: "Get an asset class by its ID",

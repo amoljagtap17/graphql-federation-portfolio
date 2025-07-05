@@ -10,6 +10,10 @@ export class BroadAssetClassService {
 		private readonly broadAssetClassRepository: Repository<BroadAssetClass>,
 	) {}
 
+	async getBroadAssetClasses(): Promise<BroadAssetClass[]> {
+		return this.broadAssetClassRepository.find();
+	}
+
 	async getBroadAssetClassById(id: string): Promise<BroadAssetClass | null> {
 		return this.broadAssetClassRepository.findOneBy({
 			id,

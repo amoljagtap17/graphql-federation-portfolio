@@ -19,7 +19,8 @@
 		"test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
 		"test:e2e": "jest --config ./apps/gateway/test/jest-e2e.json",
 		"seed:asset-classification": "npx ts-node ./scripts/seedAssetClassification.ts",
-		"seed:firm": "npx ts-node ./scripts/seedFirm.ts"
+		"seed:firm": "npx ts-node ./scripts/seedFirm.ts",
+		"seed:client": "npx ts-node ./scripts/seedClient.ts"
 	},
 	"dependencies": {
 		"@apollo/gateway": "^2.11.2",

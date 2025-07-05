@@ -10,7 +10,11 @@ export class UserService {
 		private readonly usersRepository: Repository<User>,
 	) {}
 
-	async findOne(id: string): Promise<User | null> {
-		return this.usersRepository.findOne({ where: { id }, relations: ["firm"] });
+	async getUserById(id: string): Promise<User> {
+		return this.usersRepository.findOneOrFail({ where: { id } });
+	}
+
+	async getUsersByFirmId(firmId: string): Promise<User[]> {
+		return this.usersRepository.find({ where: { firmId } });
 	}
 }

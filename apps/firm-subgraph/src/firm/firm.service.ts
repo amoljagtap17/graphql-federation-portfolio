@@ -10,7 +10,7 @@ export class FirmService {
 		private readonly firmsRepository: Repository<Firm>,
 	) {}
 
-	async findOne(id: string): Promise<Firm | null> {
-		return this.firmsRepository.findOne({ where: { id }, relations: ["users"] });
+	async getFirmById(id: string): Promise<Firm> {
+		return this.firmsRepository.findOneOrFail({ where: { id } });
 	}
 }

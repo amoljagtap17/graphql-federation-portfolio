@@ -1,5 +1,5 @@
 import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Firm } from "../../firm/entities/firm.entity";
 
 @ObjectType({ description: "User entity representing a user in the system" })
@@ -26,7 +26,5 @@ export class User {
 	firmId: string;
 
 	@Field(() => Firm, { description: "Firm associated with the user" })
-	@ManyToOne(() => Firm, (firm) => firm.users, { nullable: false })
-	@JoinColumn({ name: "firm_id" })
 	firm: Firm;
 }

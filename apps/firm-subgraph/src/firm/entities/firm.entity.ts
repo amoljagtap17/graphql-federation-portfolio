@@ -1,5 +1,5 @@
 import { Directive, Field, ID, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "../../user/entities/user.entity";
 
 @ObjectType({ description: "Firm entity representing a financial firm or institution" })
@@ -15,6 +15,5 @@ export class Firm {
 	name: string;
 
 	@Field(() => [User], { description: "Users associated with the firm" })
-	@OneToMany(() => User, (user) => user.firm)
 	users: User[];
 }

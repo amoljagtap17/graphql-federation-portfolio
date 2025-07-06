@@ -1,5 +1,6 @@
 import { Directive, Field, Float, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Benchmark } from "../../benchmark/entities/benchmark.entity";
 
 @ObjectType({ description: "Performance Return entity representing performance data" })
 @Directive('@key(fields: "id")')
@@ -45,7 +46,12 @@ export class PerformanceReturn {
 	@Column({ type: "decimal", precision: 5, scale: 2 })
 	benchmarkReturnPercent: number;
 
-	@Field(() => ID, { description: "The unique identifier of the benchmark" })
 	@Column({ name: "benchmark_id" })
 	benchmarkId: string;
+
+	@Field(() => Benchmark, {
+		description: "The benchmark associated with the performance return",
+		nullable: true,
+	})
+	benchmark?: Benchmark;
 }

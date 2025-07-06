@@ -7,5 +7,6 @@ import { Benchmark } from "./entities/benchmark.entity";
 @Module({
 	imports: [DatabaseModule, DatabaseModule.forFeature([Benchmark])],
 	providers: [BenchmarkResolver, BenchmarkService],
+	exports: [BenchmarkService],
 })
 export class BenchmarkModule {}

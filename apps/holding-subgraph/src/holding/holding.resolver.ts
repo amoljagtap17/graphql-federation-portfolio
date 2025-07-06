@@ -37,7 +37,7 @@ export class HoldingResolver {
 	performanceReturn(@Parent() holding: Holding): any {
 		return {
 			__typename: "PerformanceReturn",
-			entityType: "Holding",
+			entityType: "holding",
 			entityId: holding.id,
 			asOfDate: holding.asOfDate,
 		};

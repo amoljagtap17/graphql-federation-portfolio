@@ -53,7 +53,7 @@ type Holding {
   marketValue: Float!
 
   """The performance return for the holding as of the specified date"""
-  performanceReturn: PerformanceReturn!
+  performanceReturn: PerformanceReturn
 
   """Price of the holding"""
   price: Float!

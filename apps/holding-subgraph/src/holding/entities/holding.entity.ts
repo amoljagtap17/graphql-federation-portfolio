@@ -1,6 +1,7 @@
 import { Directive, Field, Float, ID, ObjectType } from "@nestjs/graphql";
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { Security } from "../../security/entities/security.entity";
+import { PerformanceReturn } from "./performance-return.entity";
 
 @ObjectType({ description: "Holding entity representing a financial holding in the system" })
 @Directive('@key(fields: "id")')
@@ -34,4 +35,10 @@ export class Holding {
 
 	@Field(() => Security, { description: "Security associated with the holding" })
 	security: Security;
+
+	@Field(() => PerformanceReturn, {
+		description: "The performance return for the holding as of the specified date",
+		nullable: true,
+	})
+	performanceReturn?: PerformanceReturn;
 }

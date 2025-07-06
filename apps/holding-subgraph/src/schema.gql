@@ -52,6 +52,9 @@ type Holding {
   """Market value of the holding"""
   marketValue: Float!
 
+  """The performance return for the holding as of the specified date"""
+  performanceReturn: PerformanceReturn!
+
   """Price of the holding"""
   price: Float!
 
@@ -60,6 +63,12 @@ type Holding {
 
   """Security associated with the holding"""
   security: Security!
+}
+
+"""Performance Return entity representing performance data"""
+type PerformanceReturn {
+  """Unique identifier for the performance return"""
+  id: ID!
 }
 
 type Query {

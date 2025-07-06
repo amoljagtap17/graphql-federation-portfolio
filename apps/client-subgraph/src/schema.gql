@@ -37,3 +37,8 @@ type Firm {
   """Unique identifier for the firm"""
   id: ID!
 }
+
+type Query {
+  """Get all accounts for a specific client"""
+  accountsByClientId(clientId: ID!): [Account!]!
+}

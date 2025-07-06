@@ -17,7 +17,7 @@ export class PerformanceReturnResolver {
 		@Args("asOfDate") asOfDate: Date,
 	): Promise<PerformanceReturn | null> {
 		return this.performanceReturnService.getPerformanceReturnsByEntityAndDate(
-			entityType as "holding" | "account",
+			entityType,
 			entityId,
 			asOfDate,
 		);
@@ -26,7 +26,7 @@ export class PerformanceReturnResolver {
 	@ResolveReference()
 	resolveReference(reference: {
 		__typename: string;
-		entityType: "holding" | "account";
+		entityType: string;
 		entityId: string;
 		asOfDate: Date;
 	}): Promise<PerformanceReturn | null> {

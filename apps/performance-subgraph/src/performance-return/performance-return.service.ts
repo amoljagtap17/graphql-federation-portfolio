@@ -11,7 +11,7 @@ export class PerformanceReturnService {
 	) {}
 
 	async getPerformanceReturnsByEntityAndDate(
-		entityType: "holding" | "account",
+		entityType: string,
 		entityId: string,
 		asOfDate: Date,
 	): Promise<PerformanceReturn | null> {

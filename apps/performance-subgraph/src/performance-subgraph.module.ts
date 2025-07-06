@@ -5,6 +5,7 @@ import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { join } from "path";
 import { BenchmarkModule } from "./benchmark/benchmark.module";
+import { Holding } from "./performance-return/entities/holding.entity";
 import { PerformanceReturnModule } from "./performance-return/performance-return.module";
 
 @Module({
@@ -14,6 +15,9 @@ import { PerformanceReturnModule } from "./performance-return/performance-return
 			autoSchemaFile: {
 				federation: 2,
 				path: join(process.cwd(), "apps/performance-subgraph", "src/schema.gql"),
+			},
+			buildSchemaOptions: {
+				orphanedTypes: [Holding],
 			},
 			playground: false,
 			sortSchema: true,

@@ -1,4 +1,4 @@
-import { Args, Query, Resolver, ResolveReference } from "@nestjs/graphql";
+import { Args, Query, Resolver } from "@nestjs/graphql";
 import { PerformanceReturn } from "./entities/performance-return.entity";
 import { PerformanceReturnService } from "./performance-return.service";
 
@@ -20,20 +20,6 @@ export class PerformanceReturnResolver {
 			entityType,
 			entityId,
 			asOfDate,
-		);
-	}
-
-	@ResolveReference()
-	resolveReference(reference: {
-		__typename: string;
-		entityType: string;
-		entityId: string;
-		asOfDate: Date;
-	}): Promise<PerformanceReturn | null> {
-		return this.performanceReturnService.getPerformanceReturnsByEntityAndDate(
-			reference.entityType,
-			reference.entityId,
-			reference.asOfDate,
 		);
 	}
 }
